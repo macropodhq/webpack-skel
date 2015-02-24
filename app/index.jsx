@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react');
 var Router = require('react-router');
 
@@ -11,7 +9,7 @@ var App = React.createClass({
   render() {
     return (
       <div className="App">
-        <h1>TEH NEW APP</h1>
+        <h1>THE NEW APP</h1>
         <Router.Link to="someview">GO TO SOMEVIEW</Router.Link>
         <br />
         <Router.Link to="/">GO TO HOME</Router.Link>
@@ -49,8 +47,8 @@ var routes = (
   </Router.Route>
 );
 
-
-Router.run(routes, (Handler, state) => {
+// use the HTML5 history API for cleaner URLs
+Router.run(routes, Router.HistoryLocation, (Handler, state) => {
   log('route change', state);
 
   // store logic here if required
