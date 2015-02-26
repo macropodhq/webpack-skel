@@ -7,7 +7,7 @@ var plugins = [
   //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
 ];
 
-var jsxLoader = ['jsx'];
+var jsxLoader = ['babel-loader'];
 
 if (release)  {
   plugins.push(new webpack.DefinePlugin({
@@ -20,7 +20,7 @@ if (release)  {
   plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin());
 } else {
-  jsxLoader = ['react-hot', 'jsx?harmony'];
+  jsxLoader = ['react-hot', 'babel-loader'];
 }
 
 var config = module.exports = {
@@ -41,7 +41,7 @@ var config = module.exports = {
   },
   module: {
     loaders: [
-    { test: /\.js$/, loaders: ['jsx?harmony'] },
+    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
     { test: /\.jsx$/, loaders: jsxLoader },
     {
       test: /\.scss$/,
