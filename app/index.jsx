@@ -47,7 +47,6 @@ var routes = (
   </Router.Route>
 );
 
-// use the HTML5 history API for cleaner URLs
 Router.run(routes, Router.HistoryLocation, (Handler, state) => {
   log('route change', state);
 
