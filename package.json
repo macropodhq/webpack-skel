@@ -28,7 +28,7 @@
   "scripts": {
     "build-dev": "webpack --watch --display-reasons --display-error-details --progress --colors",
     "start": "./bin/start.sh",
-    "build": "webpack -p --display-reasons --display-error-details --progress --colors --config webpack.config.js"
+    "build": "NODE_ENV=production webpack -p --display-reasons --display-error-details --progress --colors --config webpack.config.js"
   },
   "repository": {
     "type": "git",
