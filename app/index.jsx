@@ -3,7 +3,7 @@ var Router = require('react-router');
 
 var log = require('bows')('App');
 
-require('./index.scss');
+require('./index.css');
 
 var App = React.createClass({
   render() {

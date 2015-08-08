@@ -1,0 +1,18 @@
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #e3e4ef;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.App {
+  height: 100%;
+  color: #a8a9b7;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: sans-serif;
+}

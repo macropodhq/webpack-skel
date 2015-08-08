@@ -4,10 +4,9 @@ var release = (process.env.NODE_ENV === 'production');
 
 var plugins = [
   new webpack.NormalModuleReplacementPlugin(/^react$/, 'react/addons'),
-  //new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
 ];
 
-var jsxLoader = ['babel-loader'];
+var jsLoaders = ['babel?optional[]=runtime&stage=1&cacheDirectory=true'];
 
 if (release)  {
   plugins.push(new webpack.DefinePlugin({
@@ -20,43 +19,53 @@ if (release)  {
   plugins.push(new webpack.optimize.DedupePlugin());
   plugins.push(new webpack.optimize.UglifyJsPlugin());
 } else {
-  jsxLoader = ['react-hot', 'babel-loader'];
+  jsLoaders.unshift('react-hot');
 }
 
 var config = module.exports = {
   debug: !release,
-  cache: !release,
-  devtool: !release && 'inline-source-map',
+  devtool: 'source-map', //http://webpack.github.io/docs/configuration.html#devtool
   entry: {
     'app': './app',
-    //vendor: ['react/addons', 'react-router', 'bows', 'fluxxor', 'lodash'] //, 'lunr', 'moment', 'node-uuid', 'superagent', 'tcomb-validation', 'react-textarea-autosize', 'react-playground']
   },
   output: {
-    path: __dirname + '/dist',
+    path: './dist',
     filename: '[name].js',
   },
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss'],
+    extensions: ['', '.js', '.jsx', '.css'],
   },
   module: {
     loaders: [
-    { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-    { test: /\.jsx$/, loaders: jsxLoader },
     {
-      test: /\.scss$/,
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      loaders: jsLoaders,
+    },
+    {
+      test: /\.css$/,
       loaders: [
-      'style-loader',
-      'css-loader',
-      'autoprefixer-loader',
-      'sass-loader?includePaths[]=./app/base/style,includePaths[]=./node_modules'
+        'style',
+        'css',
       ],
     },
-    { test: /\.css$/,   loader: 'style-loader!css-loader' },
-    { test: /\.png$/,   loader: 'url-loader' },
-    { test: /\.woff$/,  loader: 'url-loader?mimetype=application/font-woff' },
-    { test: /\.ttf$/,   loader: 'url-loader?' },
-    { test: /\.eot$/,   loader: 'url-loader?' },
+    {
+      test: /\.png$/,
+      loader: 'url?limit=10000&mimetype=image/png',
+    },
+    // you might want to do more magical things with these
+    {
+      test: /\.(jpe?g|gif)$/,
+      loader: 'file',
+    },
+    // inline fonts smaller than 10000 bytes
+    // mimetypes are boring: http://www.iana.org/assignments/media-types/media-types.xhtml
+    { test: /\.woff$/,  loader: 'url-loader?limit=10000&mimetype=application/font-woff' },
+    { test: /\.woff2$/,  loader: 'url-loader?limit=10000&mimetype=application/font-woff2' },
+    { test: /\.ttf$/,   loader: 'url-loader?limit=10000&mimetype=application/font-sfnt' },
+    { test: /\.eot$/,   loader: 'url-loader?limit=10000&mimetype=application/vnd.ms-fontobject' },
+    // load svgs raw, for use with https://facebook.github.io/react/tips/dangerously-set-inner-html.html
     { test: /\.svg$/,   loader: 'raw-loader?' },
     ],
   },
