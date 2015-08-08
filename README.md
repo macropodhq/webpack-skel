@@ -8,8 +8,8 @@ Contributions welcome
 Features
 =====
 
-
 no gulp or grunt
+eslint
 
 
 Install
@@ -25,10 +25,16 @@ npm start
 or on a custom port PORT=3000 npm start
 
 
+Lint
+====
+
+npm run eslint
+
+
 Build
 =====
 
-npm build
+npm run build
 
 
 What now?
@@ -44,5 +50,6 @@ You might want to do these things once you have this setup
 
 Further reading
 =====
-
-https://github.com/petehunt/webpack-howto
+[Airbnb's Javascript styleguide](https://github.com/airbnb/javascript)
+[Pete Hunt's webpack howto](https://github.com/petehunt/webpack-howto)
+[Macropod's Guide to setting up sublime with eslint](https://github.com/macropodhq/welcome-to-macropod)
