@@ -24,11 +24,23 @@ Run
 npm start
 or on a custom port PORT=3000 npm start
 
+
 Build
 =====
 
 npm build
 
+
+What now?
+====
+
+You might want to do these things once you have this setup
+* move all the dev deps into deps (if you use CI to build this, or expect other team members to have the same tools. for sure!)
+* shrinkwrap (this will speed up CI and consistency with other devs)
+* Add other loaders and file types
+* setup eslint
+* read the horrible webpack docs
+* raises issues about how you think the defaults here should change!
 
 Further reading
 =====
