@@ -10,8 +10,12 @@
   },
   "devDependencies": {
     "babel-core": "^5.8.21",
+    "babel-eslint": "^4.0.5",
     "babel-loader": "^5.3.2",
     "css-loader": "^0.15.6",
+    "eslint": "^1.1.0",
+    "eslint-config-airbnb": "0.0.7",
+    "eslint-plugin-react": "^3.2.1",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "raw-loader": "~0.5.0",
@@ -22,6 +26,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "scripts": {
+    "lint": "eslint app --ext .js,.jsx",
     "build-dev": "webpack --watch --display-reasons --display-error-details --progress --colors",
     "start": "./bin/start.sh",
     "build": "NODE_ENV=production webpack -p --display-reasons --display-error-details --progress --colors --config webpack.config.js"

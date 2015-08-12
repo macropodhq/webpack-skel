@@ -1,11 +1,11 @@
-var React = require('react');
-var Router = require('react-router');
+const React = require('react');
+const Router = require('react-router');
 
-var log = require('bows')('App');
+const log = require('bows')('App');
 
 require('./index.css');
 
-var App = React.createClass({
+const App = React.createClass({
   render() {
     return (
       <div className="App">
@@ -16,30 +16,30 @@ var App = React.createClass({
         <Router.RouteHandler {...this.props}/>
       </div>
     );
-  }
+  },
 });
 
-var SomeView = React.createClass({
+const SomeView = React.createClass({
   render() {
     return (
       <div>
         Some view
       </div>
     );
-  }
+  },
 });
 
-var DefaultView = React.createClass({
+const DefaultView = React.createClass({
   render() {
     return (
       <div>
         Default View
       </div>
     );
-  }
+  },
 });
 
-var routes = (
+const routes = (
   <Router.Route name="app" path="/" handler={App}>
     <Router.DefaultRoute handler={DefaultView}/>
     <Router.Route name="someview" path="/something" handler={SomeView}/>
