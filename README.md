@@ -1,8 +1,8 @@
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/macropodhq/webpack-skel?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+No longer maintained but do check out [Create React App] (https://github.com/facebookincubator/create-react-app)
 
-A simple template for react (or not) projects
+A simple template for react (or not [at all!]) projects
 
-Contributions welcome
+Contributions (not any more!) welcome
 
 
 Features
